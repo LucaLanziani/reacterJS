@@ -1,7 +1,7 @@
 {
-  "name": "reacter",
-  "version": "1.0.0",
-  "description": "",
+  "name": "reacterjs",
+  "version": "0.1.0",
+  "description": "A simple Object that can start a chain of reactions after a chain of events",
   "main": "index.js",
   "dependencies": {
     "FSM": "github:lucalanziani/FSM",
@@ -13,6 +13,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Luca Lanziani",
   "license": "ISC"
 }
