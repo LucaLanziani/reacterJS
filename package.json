@@ -8,10 +8,11 @@
     "mixin": "^0.2.0"
   },
   "devDependencies": {
-    "eslint": "^4.9.0"
+    "eslint": "^4.9.0",
+    "tap": "^10.7.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests"
   },
   "author": "Luca Lanziani",
   "license": "ISC"
