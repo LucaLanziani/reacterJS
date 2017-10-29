@@ -4,7 +4,7 @@
   "description": "A simple Object that can start a chain of reactions after a chain of events",
   "main": "index.js",
   "dependencies": {
-    "FSM": "github:lucalanziani/FSM",
+    "f-s-m": "^1.0.1",
     "mixin": "^0.2.0"
   },
   "devDependencies": {

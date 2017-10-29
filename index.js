@@ -1,6 +1,6 @@
 "use strict";
 
-const fsm = require('FSM');
+const fsm = require('f-s-m');
 const mixin = require('mixin');
 const EventEmitter = require('events');
 
