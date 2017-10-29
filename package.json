@@ -1,6 +1,6 @@
 {
   "name": "reacterjs",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "A simple Object that can start a chain of reactions after a chain of events",
   "main": "index.js",
   "dependencies": {
