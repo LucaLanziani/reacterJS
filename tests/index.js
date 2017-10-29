@@ -98,3 +98,25 @@ tap.test('Multiple resets are fine', function (childTest) {
 });
 
 
+tap.test('Reset after reactions', function (childTest) {
+    childTest.plan(3);
+    let reacter = new Reacter('1 - 1;100ms > 1/1/1;0;100ms', {resetAfterReactions: true}).on('reaction', function (event) {
+        childTest.equal('1/1/1;0', event, 'Reaction!!!');
+    }).process('1').process('1');
+
+    childTest.equal(reacter.getCurrentState(), 'State2', 'It did not reset yet');
+
+    setTimeout(function () {
+        childTest.equal(reacter.getCurrentState(), 'State0', 'Reset Done');
+    }, 200);
+});
+
+tap.test('Reset before reactions', function (childTest) {
+    childTest.plan(2);
+    let reacter = new Reacter('1 - 1;100ms > 1/1/1;0;200ms', {resetBeforeReactions: true}).on('reaction', function (event) {
+        childTest.equal('1/1/1;0', event, 'Reaction!!!');
+    }).process('1').process('1');
+
+    childTest.equal(reacter.getCurrentState(), 'State0', 'It reset the state before reaction');
+});
+

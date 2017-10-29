@@ -7,9 +7,9 @@ const EventEmitter = require('events');
 // Build a finite state machine for our pet dragon Burt
 class Reacter extends mixin(fsm.Machine, EventEmitter) {
 
-    constructor(chainOfEvents) {
+    constructor(chainOfEvents, options) {
         super();
-
+        this.options = options || {};
         this.events = chainOfEvents.split('>')[0];
         this.reactions = chainOfEvents.split('>')[1];
         this.previousEventTimeStamp;
@@ -20,7 +20,7 @@ class Reacter extends mixin(fsm.Machine, EventEmitter) {
         this.events = this.parseEvents(this.events);
         this.reactions = this.parseEvents(this.reactions);
         this.setupTriggers();
-        this.setInitialState('State0');
+        this.setInitialState("State0");
         return this;
     }
 
@@ -45,7 +45,17 @@ class Reacter extends mixin(fsm.Machine, EventEmitter) {
 
     react(index) {
         let reaction = this.reactions[index];
-        if (reaction === undefined) return;
+
+        if (reaction === undefined) {
+            if (this.options.resetAfterReactions) {
+                this.reset();
+            }
+            return
+        };
+
+        if (this.options.resetBeforeReactions && index === 0) {
+            this.reset();
+        }
 
         setTimeout(() => {
             this.emit('reaction', reaction.event);
